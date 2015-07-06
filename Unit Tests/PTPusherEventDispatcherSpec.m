@@ -12,13 +12,13 @@
 SPEC_BEGIN(PTPusherEventDispatcherSpec)
 
 describe(@"PTPusherEventDispatcher", ^{
-  
+
   __block PTPusherEventDispatcher *dispatcher = nil;
-  
+
   beforeEach(^{
     dispatcher = [[PTPusherEventDispatcher alloc] init];
   });
-  
+
   it(@"dispatches events to registered listeners for events with a matching name", ^{
     id mockListener = [KWMock mockForProtocol:@protocol(PTEventListener)];
     [dispatcher addEventListener:mockListener forEventNamed:@"test-event"];
@@ -31,10 +31,10 @@ describe(@"PTPusherEventDispatcher", ^{
     id mockListener = [KWMock mockForProtocol:@protocol(PTEventListener)];
     [dispatcher addEventListener:mockListener forEventNamed:@"test-event"];
     PTPusherEvent *event = anEventNamed(@"another-event");
-    [[mockListener shouldNot] receive:@selector(dispatchEvent:)];
+    [[mockListener shouldNot] receive:@selector(dispatchEvent:) withArguments:event];
     [dispatcher dispatchEvent:event];
   });
-  
+
   it(@"invalidates listeners when removing a binding", ^{
     id mockListener = [KWMock mockForProtocol:@protocol(PTEventListener)];
     PTPusherEventBinding *binding = [dispatcher addEventListener:mockListener forEventNamed:@"test-event"];
@@ -51,7 +51,7 @@ describe(@"PTPusherEventDispatcher", ^{
     [[mockListener shouldNot] receive:@selector(dispatchEvent:) withArguments:eventOne];
     [dispatcher dispatchEvent:eventOne];
   });
-  
+
 });
 
 SPEC_END
