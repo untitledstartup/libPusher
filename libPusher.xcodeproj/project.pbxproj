@@ -1986,6 +1986,7 @@
 					"kPTPusherClientLibraryVersion=@\"$(CURRENT_PROJECT_VERSION)\"",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "";
 				PRODUCT_NAME = Pusher;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2009,6 +2010,7 @@
 					"kPTPusherClientLibraryVersion=@\"$(CURRENT_PROJECT_VERSION)\"",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "";
 				PRODUCT_NAME = Pusher;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
