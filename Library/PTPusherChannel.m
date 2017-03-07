@@ -301,8 +301,9 @@
 {
   [super subscribeWithAuthorization:authData];
 
-  NSDictionary *channelData = [[PTJSON JSONParser] objectFromJSONString:authData[@"channel_data"]];
-  self.members.myID = [channelData stringValueForKey:@"user_id"];
+  NSDictionary *channelData = [[PTJSON JSONParser] objectFromJSONString:authData[@"channel_data"] parseError:^(NSError *error) {
+  }];
+  self.members.myID = channelData[@"user_id"];
 }
 
 - (void)handleSubscribeEvent:(PTPusherEvent *)event
