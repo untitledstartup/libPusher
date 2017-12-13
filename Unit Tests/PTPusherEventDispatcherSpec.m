@@ -31,7 +31,7 @@ describe(@"PTPusherEventDispatcher", ^{
     id mockListener = [KWMock mockForProtocol:@protocol(PTEventListener)];
     [dispatcher addEventListener:mockListener forEventNamed:@"test-event"];
     PTPusherEvent *event = anEventNamed(@"another-event");
-    [[mockListener shouldNot] receive:@selector(dispatchEvent:) withArguments:event];
+    [[mockListener shouldNot] receive:@selector(dispatchEvent:)];
     [dispatcher dispatchEvent:event];
   });
   

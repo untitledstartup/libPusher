@@ -7,6 +7,7 @@
 //
 
 #import "SpecHelper.h"
+#import "PTPusherChannelAuthorizationBypass.h"
 
 SPEC_BEGIN(ClientEventsSpec)
 
@@ -14,19 +15,21 @@ describe(@"Client events", ^{
   
   __block PTPusher *client = nil;
   __block PTPusherMockConnection *connection = nil;
+  __block PTPusherChannelAuthorizationBypass *authBypass = nil;
   
   registerMatchers(@"PT");
   enableClientDebugging();
   
   beforeEach(^{
     client = newTestClientWithMockConnection();
-    [client enableChannelAuthorizationBypassMode];
+    authBypass = [PTPusherChannelAuthorizationBypass new];
+    client.channelAuthorizationDelegate = authBypass;
     connection = (PTPusherMockConnection *)client.connection;
   });
   
   it(@"can be sent to private channels", ^{
     onConnect(^{
-      [client subscribeToPrivateChannelNamed:@"test-channel"];
+      [client subscribeToPrivateChannelNamed:@"test-channel-1"];
     });
     
     onSubscribe(^(PTPusherChannel *channel) {
@@ -39,12 +42,12 @@ describe(@"Client events", ^{
     
     PTPusherEvent *lastEvent = [connection.sentClientEvents lastObject];
     [[lastEvent.name should] equal:@"client-test-event"];
-    [[lastEvent.channel should] equal:@"private-test-channel"];
+    [[lastEvent.channel should] equal:@"private-test-channel-1"];
 	});
   
   it(@"will have their name automatically prefixed with client-", ^{
     onConnect(^{
-      [client subscribeToPrivateChannelNamed:@"test-channel"];
+      [client subscribeToPrivateChannelNamed:@"test-channel-2"];
     });
     
     onSubscribe(^(PTPusherChannel *channel) {
@@ -57,26 +60,22 @@ describe(@"Client events", ^{
     
     PTPusherEvent *lastEvent = [connection.sentClientEvents lastObject];
     [[lastEvent.name should] equal:@"client-test-event"];
-    [[lastEvent.channel should] equal:@"private-test-channel"];
+    [[lastEvent.channel should] equal:@"private-test-channel-2"];
 	});
   
   it(@"can be sent prior to being subscribed", ^{
     onConnect(^{
-      PTPusherPrivateChannel *channel = [client subscribeToPrivateChannelNamed:@"test-channel"];
+      PTPusherPrivateChannel *channel = [client subscribeToPrivateChannelNamed:@"test-channel-3"];
       [channel triggerEventNamed:@"test-event" data:nil];
     });
-    
-    onSubscribe(^(PTPusherChannel *channel) {
-      NSLog(@"here");
-    });
-    
+        
     [client connect];
     
     [[expectFutureValue([connection.sentClientEvents lastObject]) shouldEventually] beEventNamed:@"client-test-event"];
     
     PTPusherEvent *lastEvent = [connection.sentClientEvents lastObject];
     [[lastEvent.name should] equal:@"client-test-event"];
-    [[lastEvent.channel should] equal:@"private-test-channel"];
+    [[lastEvent.channel should] equal:@"private-test-channel-3"];
 	});
 });
 

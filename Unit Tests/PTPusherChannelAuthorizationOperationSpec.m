@@ -7,7 +7,7 @@
 //
 
 #import "SpecHelper.h"
-#import "PTPusherChannelAuthorizationOperation.h"
+#import "PTPusherChannelServerBasedAuthorization.h"
 #import "OHHTTPStubs.h"
 
 SPEC_BEGIN(PTPusherChannelAuthorizationOperationSpec)
@@ -37,7 +37,7 @@ describe(@"PTPusherChannelAuthorizationOperation", ^{
       
       [[NSOperationQueue mainQueue] addOperation:theOperation];
       
-      [[expectFutureValue(@(theOperation.isFinished)) shouldEventually] beTrue];
+      [[expectFutureValue(@(theOperation.isFinished)) shouldEventuallyBeforeTimingOutAfter(2.0)] beTrue];
     });
     
     it(@"stores the parsed JSON authorization data", ^{
@@ -64,7 +64,7 @@ describe(@"PTPusherChannelAuthorizationOperation", ^{
         return [request.URL isEqual:authURL];
         
       } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-        return [OHHTTPStubsResponse responseWithData:nil
+        return [OHHTTPStubsResponse responseWithData:[[NSData alloc] init]
                                           statusCode:400
                                              headers:nil];
       }];
@@ -103,7 +103,7 @@ describe(@"PTPusherChannelAuthorizationOperation", ^{
         return [request.URL isEqual:authURL];
         
       } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-        return [OHHTTPStubsResponse responseWithData:nil
+        return [OHHTTPStubsResponse responseWithData:[[NSData alloc] init]
                                           statusCode:200
                                              headers:nil];
       }];

@@ -41,30 +41,14 @@
   return [[NSString alloc] initWithData:[self JSONDataFromObject:object] encoding:NSUTF8StringEncoding];
 }
 
-- (id)objectFromJSONData:(NSData *)data parseError:(nullable void (^)(NSError *error))parseError
+- (id)objectFromJSONData:(NSData *)data
 {
-  NSDictionary *response;
-  NSError *error;
-
-  @try {
-    response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-  } @catch (NSException *exception) {
-    error = [NSError errorWithDomain:@"NSJSONSerializationException" code:-1 userInfo:@{@"NSDebugDescription":exception.reason}];
-  }
-
-  if (parseError && error) {
-    parseError(error);
-  }
-
-  if (!response)
-    response = @{};
-
-  return response;
+  return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 }
 
-- (id)objectFromJSONString:(NSString *)string parseError:(nullable void (^)(NSError *error))parseError
+- (id)objectFromJSONString:(NSString *)string
 {
-  return [self objectFromJSONData:[string dataUsingEncoding:NSUTF8StringEncoding] parseError:parseError];
+  return [self objectFromJSONData:[string dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 @end
