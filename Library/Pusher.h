@@ -11,3 +11,4 @@
 #import <Pusher/PTPusherEvent.h>
 #import <Pusher/PTPusherAPI.h>
 #import <Pusher/PTPusherEventDispatcher.h>
+#import <Pusher/PTPusherChannelAuthorizationOperation.h>

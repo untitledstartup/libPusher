@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PTURLRequestOperation.h"
 
+//@class PTPusherChannelAuthorizationOperation;
 typedef enum {
   PTPusherChannelAuthorizationConnectionError = 100,
   PTPusherChannelAuthorizationBadResponseError

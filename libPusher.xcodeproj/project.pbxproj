@@ -111,9 +111,9 @@
 		A3E5CC4718466CD5006A54DD /* PTBlockEventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC3F18466CD5006A54DD /* PTBlockEventListener.h */; };
 		A3E5CC4818466CD5006A54DD /* PTJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4018466CD5006A54DD /* PTJSON.h */; };
 		A3E5CC4918466CD5006A54DD /* PTPusherChannel_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4118466CD5006A54DD /* PTPusherChannel_Private.h */; };
-		A3E5CC4A18466CD5006A54DD /* PTPusherChannelAuthorizationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4218466CD5006A54DD /* PTPusherChannelAuthorizationOperation.h */; };
+		A3E5CC4A18466CD5006A54DD /* PTPusherChannelAuthorizationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4218466CD5006A54DD /* PTPusherChannelAuthorizationOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3E5CC4B18466CD5006A54DD /* PTTargetActionEventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4318466CD5006A54DD /* PTTargetActionEventListener.h */; };
-		A3E5CC4C18466CD5006A54DD /* PTURLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4418466CD5006A54DD /* PTURLRequestOperation.h */; };
+		A3E5CC4C18466CD5006A54DD /* PTURLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E5CC4418466CD5006A54DD /* PTURLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3F032471822CC8A00976DA0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F700C4637DC43EFA335D40F /* libPods.a */; };
 		A3FE41CB11811161009CF5D7 /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE41C911811161009CF5D7 /* NewEventViewController.m */; };
 		A3FE41CC11811161009CF5D7 /* NewEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FE41CA11811161009CF5D7 /* NewEventViewController.xib */; };
@@ -344,6 +344,8 @@
 				A3FE429311811ED6009CF5D7 /* Utility */,
 				4D81597E1712C6CA0013A485 /* Pusher.h */,
 				A3D1D28C1157FA4C009A12AD /* PTEventListener.h */,
+				A3E5CC4218466CD5006A54DD /* PTPusherChannelAuthorizationOperation.h */,
+				A3AC28C213F76C50001C4808 /* PTPusherChannelAuthorizationOperation.m */,
 				A3D1D28E1157FA4C009A12AD /* PTPusher.h */,
 				A3D1D28F1157FA4C009A12AD /* PTPusher.m */,
 				A35281D213F72E03000687C0 /* PTPusherEventPublisher.h */,
@@ -354,7 +356,6 @@
 				A3A1A41611582DC3001EF877 /* PTPusherDelegate.h */,
 				A3FE42181181173B009CF5D7 /* PTPusherChannel.h */,
 				A3FE42191181173B009CF5D7 /* PTPusherChannel.m */,
-				A3AC28C213F76C50001C4808 /* PTPusherChannelAuthorizationOperation.m */,
 				A35281CE13F721A8000687C0 /* PTPusherConnection.h */,
 				A35281CF13F721A8000687C0 /* PTPusherConnection.m */,
 				A39E238613F7E3FD0083CAD7 /* PTPusherErrors.h */,
@@ -552,7 +553,6 @@
 				A3E5CC3F18466CD5006A54DD /* PTBlockEventListener.h */,
 				A3E5CC4018466CD5006A54DD /* PTJSON.h */,
 				A3E5CC4118466CD5006A54DD /* PTPusherChannel_Private.h */,
-				A3E5CC4218466CD5006A54DD /* PTPusherChannelAuthorizationOperation.h */,
 				A3E5CC4318466CD5006A54DD /* PTTargetActionEventListener.h */,
 				A3E5CC4418466CD5006A54DD /* PTURLRequestOperation.h */,
 			);

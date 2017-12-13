@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface PTURLRequestOperation : NSOperation {
   BOOL _isExecuting;
   BOOL _isFinished;
